@@ -46,13 +46,13 @@ init_function(struct vmod_priv *priv __attribute__((unused)),
 }
 
 const char * __match_proto__()
-vmod_version(struct sess *sp __attribute__((unused)))
+vmod_version(const struct vrt_ctx *ctx __attribute__((unused)))
 {
 	return VERSION;
 }
 
 const char * __match_proto__()
-vmod_expires_from_cache_control(struct sess *sp, double default_duration)
+vmod_expires_from_cache_control(const struct vrt_ctx *ctx, double default_duration)
 {
 	char *header = VRT_GetHdr(sp, HDR_RESP, "\016cache-control:");
 	int max_age = -1;
@@ -70,7 +70,7 @@ vmod_expires_from_cache_control(struct sess *sp, double default_duration)
 }
 
 const char * __match_proto__()
-vmod_rfc_format(struct sess *sp, double seconds_since_epoch)
+vmod_rfc_format(const struct vrt_ctx *ctx, double seconds_since_epoch)
 {
 	char *u;
 	u = WS_Alloc(sp->wrk->ws, TIM_FORMAT_SIZE);

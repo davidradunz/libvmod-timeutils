@@ -1,0 +1,5 @@
+libvmod-timeutils (0.1) unstable; urgency=low
+
+  * Updated to support Varnish 4.0
+
+ -- David Radunz <david@vimtura.com>  Sun, 6 Sep 2015 19:07:00 +1000
