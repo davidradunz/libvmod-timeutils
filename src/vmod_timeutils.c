@@ -29,7 +29,7 @@
 #include <stdlib.h>
 
 #include "vrt.h"
-#include "bin/varnishd/cache.h"
+#include "cache/cache.h"
 #include "include/vct.h"
 
 #include "vcc_if.h"
