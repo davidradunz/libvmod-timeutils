@@ -55,7 +55,7 @@ const char * __match_proto__()
 vmod_expires_from_cache_control(const struct vrt_ctx *ctx, double default_duration)
 {
   const struct gethdr_s hdr = { HDR_RESP, "\016cache-control:" };
-	char *header = VRT_GetHdr(vrt_ctx->req->sp, &hdr);
+	char *header = VRT_GetHdr(ctx->req->sp, &hdr);
 	int max_age = -1;
 	if (header) {
 		while (*header != '\0') {
@@ -67,14 +67,14 @@ vmod_expires_from_cache_control(const struct vrt_ctx *ctx, double default_durati
 			header++;
 		}
 	}
-	return vmod_rfc_format(vrt_ctx, (TIM_real() + (max_age == -1 ? default_duration : max_age)));
+	return vmod_rfc_format(ctx, (TIM_real() + (max_age == -1 ? default_duration : max_age)));
 }
 
 const char * __match_proto__()
 vmod_rfc_format(const struct vrt_ctx *ctx, double seconds_since_epoch)
 {
 	char *u;
-	u = WS_Alloc(vrt_vtx->req->sp->wrk->ws, TIM_FORMAT_SIZE);
+	u = WS_Alloc(ctx->req->sp->wrk->ws, TIM_FORMAT_SIZE);
 	if (u == NULL) {
 		return (NULL);
 	}
