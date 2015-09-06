@@ -1,5 +1,20 @@
-Module timeutils
-Init init_function
-Function STRING version()
-Function STRING rfc_format(DURATION)
-Function STRING expires_from_cache_control(DURATION)
+#
+# Copyright Jeremy Thomerson, Expert Tech Services, LLC (c) 2012.
+#
+# (vmodtool requires this format.)
+#
+
+$Module timeutils
+
+DESCRIPTION
+===========
+
+This VMOD allows you to RFC-format a date from a numeric value (such as the one you get in VCL by using "now + 30m").  It also lets you set a new Expires header on outbound requests by automatically calculating for you the value of the current time plus the value in the s-maxage value of the backend response's Cache-Control header, or if one is not present, a default you supply in VCL.
+
+This VMOD may only be useful in 3.0 versions of Varnish.  In the next major release there are facilities built into Varnish that will allow you to format dates and thus will allow a regex to extract s-maxage and the date to be formatted all in your VCL.
+
+$Init init_function
+$Function STRING version()
+$Function STRING rfc_format(DURATION)
+$Function STRING expires_from_cache_control(DURATION)
+
