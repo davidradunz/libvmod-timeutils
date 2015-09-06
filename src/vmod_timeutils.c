@@ -30,10 +30,9 @@
 
 #include "vrt.h"
 #include "cache/cache.h"
-#include "include/vct.h"
 
 #include "vcc_if.h"
-#include "config.h"
+
 
 /*
  * vmod entrypoint. Sets up the module
