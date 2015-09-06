@@ -54,7 +54,8 @@ vmod_version(const struct vrt_ctx *ctx __attribute__((unused)))
 const char * __match_proto__()
 vmod_expires_from_cache_control(const struct vrt_ctx *ctx, double default_duration)
 {
-	char *header = VRT_GetHdr(vrt_ctx->req->sp, HDR_RESP, "\016cache-control:");
+  const struct gethdr_s hdr = { HDR_RESP, "\016cache-control:" };
+	char *header = VRT_GetHdr(vrt_ctx->req->sp, &hdr);
 	int max_age = -1;
 	if (header) {
 		while (*header != '\0') {
