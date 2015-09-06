@@ -32,6 +32,7 @@
 #include "cache/cache.h"
 
 #include "vcc_if.h"
+#include "config.h"
 
 
 /*
